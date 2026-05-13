@@ -1,74 +1,61 @@
-// 1. Efeito de Scroll no Header
+// 1. Efeito de Scroll no Navbar
 window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
+    const nav = document.getElementById('navbar');
     if (window.scrollY > 100) {
-        header.classList.add('scrolled');
+        nav.classList.add('active');
     } else {
-        header.classList.remove('scrolled');
+        nav.classList.remove('active');
     }
 });
 
-// 2. Sistema de Abas (Tabs)
-function openTab(evt, tabName) {
-    const tabContents = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-    }
+// 2. Scroll Reveal: Faz os textos aparecerem suavemente ao descer
+const revealElements = document.querySelectorAll('.reveal');
 
-    const tabBtns = document.getElementsByClassName("tab-btn");
-    for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove("active");
-    }
+const scrollReveal = () => {
+    const triggerBottom = window.innerHeight / 5 * 4;
 
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
-}
+    revealElements.forEach(el => {
+        const elTop = el.getBoundingClientRect().top;
 
-// 3. Animando os Números (Counters) ao rolar até eles
-const counters = document.querySelectorAll('.counter');
-const speed = 200; // Quanto menor, mais rápido
-
-const startCounters = () => {
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const inc = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + inc);
-                setTimeout(updateCount, 15);
-            } else {
-                counter.innerText = target;
-            }
-        };
-        updateCount();
-    });
-};
-
-// Intersection Observer para disparar a animação apenas quando visível
-const observerOptions = {
-    threshold: 0.5
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            startCounters();
-            observer.unobserve(entry.target);
+        if (elTop < triggerBottom) {
+            el.classList.add('visible');
         }
     });
-}, observerOptions);
+};
 
-const sectionDados = document.querySelector('.counters-section');
-if(sectionDados) observer.observe(sectionDados);
+window.addEventListener('scroll', scrollReveal);
 
-// 4. Smooth Scroll para os links internos (melhorado)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+// Disparar uma vez no load para elementos que já estão na tela
+window.addEventListener('load', scrollReveal);
+
+// 3. Efeito Parallax Simples no Hero
+window.addEventListener('scroll', () => {
+    const heroText = document.querySelector('.hero-text');
+    let scrollVal = window.scrollY;
+    heroText.style.transform = `translateY(${scrollVal * 0.4}px)`;
+    heroText.style.opacity = 1 - (scrollVal / 700);
+});
+
+// 4. Mobile Menu Toggle
+const menuToggle = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+
+menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+    menuToggle.classList.toggle('is-active');
+});
+
+// 5. Simulação de preenchimento das barras de progresso ao chegar nelas
+const progressSection = document.getElementById('metas');
+let animated = false;
+
+window.addEventListener('scroll', () => {
+    const sectionPos = progressSection.getBoundingClientRect().top;
+    const screenPos = window.innerHeight;
+
+    if (sectionPos < screenPos && !animated) {
+        // As larguras já estão no HTML, aqui poderíamos disparar sons ou outras interações
+        animated = true;
+        console.log("Metas alcançadas!");
+    }
 });

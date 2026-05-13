@@ -3,51 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte | Futuro Sustentável</title>
+    <title>AgroForte 360 | O Futuro da Terra</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">Agro<span>Forte</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Equilíbrio</a></li>
-                <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav id="navbar">
+        <div class="logo">AGRO<span>360</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="#hero">Início</a></li>
+            <li><a href="#manifesto">Manifesto</a></li>
+            <li><a href="#tecnologia">Tecnologia</a></li>
+            <li><a href="#biomas">Biomas</a></li>
+            <li><a href="#metas">Metas 2030</a></li>
+        </ul>
+    </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Produção que alimenta, <br><span>Cuidado que preserva.</span></h1>
-            <p>O equilíbrio perfeito entre a força do campo e a saúde do planeta.</p>
-            <button onclick="scrollToSection('sobre')">Saiba Mais</button>
+    <section id="hero" class="parallax-section">
+        <div class="hero-text">
+            <h1 class="reveal">Alimentando o Mundo,<br>Protegendo o Berço.</h1>
+            <p class="reveal">Uma jornada pela produtividade consciente e o equilíbrio ambiental.</p>
+            <div class="scroll-indicator"><span></span></div>
         </div>
     </section>
 
-    <section id="sobre" class="info-section">
-        <h2>O Pilar da Sustentabilidade</h2>
-        <div class="cards-container">
-            <div class="card">
-                <h3>Produtividade</h3>
-                <p>Otimização de safras com o uso consciente de recursos hídricos e solo.</p>
+    <section id="manifesto" class="text-heavy-section container">
+        <h2 class="reveal">O Novo Agro é Imparável</h2>
+        <div class="manifesto-grid">
+            <div class="main-text reveal">
+                <p>O agronegócio não é apenas o motor da economia; é o guardião da segurança alimentar global. No entanto, a força sem consciência é frágil. Entendemos que para produzir mais, não precisamos de mais terra, mas de mais inteligência.</p>
+                <p>Nesta nova era, a tecnologia atua como uma ponte. Onde antes havia dúvida, hoje há dados. Onde havia desperdício, hoje há precisão milimétrica. O Agro Forte de hoje é aquele que entende que a floresta em pé vale tanto quanto o grão colhido.</p>
             </div>
-            <div class="card">
-                <h3>Preservação</h3>
-                <p>Respeito às áreas de reserva e fomento à biodiversidade local.</p>
+            <div class="side-stats reveal">
+                <div class="stat-box">
+                    <span>+25%</span>
+                    <p>De ganho de produtividade sem desmatamento nos últimos 5 anos.</p>
+                </div>
+                <div class="stat-box">
+                    <span>80%</span>
+                    <p>Das águas utilizadas são devolvidas limpas ao ecossistema.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Futuro</h3>
-                <p>Garantindo que as próximas gerações herdem uma terra fértil e viva.</p>
+        </div>
+    </section>
+
+    <section id="tecnologia" class="dark-section">
+        <div class="container">
+            <h2 class="reveal">Inovação Radical</h2>
+            <div class="tech-cards">
+                <div class="t-card reveal">
+                    <div class="icon">🛰️</div>
+                    <h3>Monitoramento Espacial</h3>
+                    <p>Satélites de última geração monitoram cada metro quadrado da propriedade, identificando estresse hídrico ou pragas antes mesmo que sejam visíveis ao olho humano. Isso reduz drasticamente o uso de defensivos.</p>
+                </div>
+                <div class="t-card reveal">
+                    <div class="icon">🧬</div>
+                    <h3>Genética Sustentável</h3>
+                    <p>Desenvolvemos sementes que prosperam com menos água e são naturalmente resistentes às oscilações climáticas, garantindo que a produção não pare, mesmo diante dos desafios do aquecimento global.</p>
+                </div>
+                <div class="t-card reveal">
+                    <div class="icon">🤖</div>
+                    <h3>Automação Verde</h3>
+                    <p>Tratores e drones autônomos que operam com energia renovável. A eficiência mecânica encontra a pegada zero de carbono, criando um ciclo de produção totalmente limpo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="biomas" class="bioma-section">
+        <div class="bioma-content reveal">
+            <h2>Respeito aos Biomas</h2>
+            <p>Nossa produção respeita as leis naturais. No Cerrado, na Amazônia ou no Pampa, aplicamos técnicas de manejo que conservam a biodiversidade local. Criamos corredores de fauna que permitem que a vida selvagem coexista com a agricultura moderna.</p>
+            <p>A preservação de nascentes é nossa prioridade absoluta. Sem água, não há vida e não há agro. Somos os maiores interessados na saúde do clima.</p>
+            <button class="btn-outline">Ver Relatório de Biodiversidade</button>
+        </div>
+    </section>
+
+    <section id="metas" class="container">
+        <h2 class="reveal">Nossas Metas para 2030</h2>
+        <div class="progress-container reveal">
+            <div class="progress-item">
+                <label>Recuperação de Solos Degradados</label>
+                <div class="progress-bar"><div class="progress-fill" style="width: 75%;"><span>75%</span></div></div>
+            </div>
+            <div class="progress-item">
+                <label>Energia 100% Renovável</label>
+                <div class="progress-bar"><div class="progress-fill" style="width: 60%;"><span>60%</span></div></div>
+            </div>
+            <div class="progress-item">
+                <label>Zero Resíduos Plásticos</label>
+                <div class="progress-bar"><div class="progress-fill" style="width: 90%;"><span>90%</span></div></div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Agro Forte - Inovação e Respeito ao Meio Ambiente.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>AGRO360</h3>
+                    <p>Liderando a revolução verde no campo.</p>
+                </div>
+                <div>
+                    <h3>Contato</h3>
+                    <p>contato@agro360sustentavel.com.br</p>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">© 2026 Agro Forte Sustentável - Todos os direitos reservados.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
