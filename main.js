@@ -1,61 +1,33 @@
-// 1. Efeito de Scroll no Navbar
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    if (window.scrollY > 100) {
-        nav.classList.add('active');
-    } else {
-        nav.classList.remove('active');
-    }
-});
+// 1. Barra de progresso de leitura
+window.onscroll = function() { updateProgressBar() };
 
-// 2. Scroll Reveal: Faz os textos aparecerem suavemente ao descer
-const revealElements = document.querySelectorAll('.reveal');
+function updateProgressBar() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progress-bar").style.width = scrolled + "%";
+}
 
-const scrollReveal = () => {
-    const triggerBottom = window.innerHeight / 5 * 4;
-
-    revealElements.forEach(el => {
-        const elTop = el.getBoundingClientRect().top;
-
-        if (elTop < triggerBottom) {
-            el.classList.add('visible');
-        }
-    });
+// 2. Efeito de surgimento suave (Fade In) das seções
+const observerOptions = {
+    threshold: 0.1
 };
 
-window.addEventListener('scroll', scrollReveal);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, observerOptions);
 
-// Disparar uma vez no load para elementos que já estão na tela
-window.addEventListener('load', scrollReveal);
-
-// 3. Efeito Parallax Simples no Hero
-window.addEventListener('scroll', () => {
-    const heroText = document.querySelector('.hero-text');
-    let scrollVal = window.scrollY;
-    heroText.style.transform = `translateY(${scrollVal * 0.4}px)`;
-    heroText.style.opacity = 1 - (scrollVal / 700);
+document.querySelectorAll('.container').forEach(section => {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(30px)";
+    section.style.transition = "all 0.8s ease-out";
+    observer.observe(section);
 });
 
-// 4. Mobile Menu Toggle
-const menuToggle = document.getElementById('mobile-menu');
-const navList = document.querySelector('.nav-list');
-
-menuToggle.addEventListener('click', () => {
-    navList.classList.toggle('active');
-    menuToggle.classList.toggle('is-active');
-});
-
-// 5. Simulação de preenchimento das barras de progresso ao chegar nelas
-const progressSection = document.getElementById('metas');
-let animated = false;
-
-window.addEventListener('scroll', () => {
-    const sectionPos = progressSection.getBoundingClientRect().top;
-    const screenPos = window.innerHeight;
-
-    if (sectionPos < screenPos && !animated) {
-        // As larguras já estão no HTML, aqui poderíamos disparar sons ou outras interações
-        animated = true;
-        console.log("Metas alcançadas!");
-    }
-});
+// 3. Log de console para confirmar carregamento
+console.log("Leitura do Manifesto Agro Forte carregada.");
