@@ -212,7 +212,7 @@ Toda a implementação, personalização e adaptação do projeto foram realizad
 
 **Karoline Pereira**
 
-Projeto desenvolvido durante as aulas de Programação da **Professora Regiane**, aplicando conhecimentos de desenvolvimento web, design responsivo e programação front-end.
+Projeto desenvolvido durante as aulas de Programação da **Professora Regiane Heil Plem**, aplicando conhecimentos de desenvolvimento web, design responsivo e programação front-end.
 
 ---
 
